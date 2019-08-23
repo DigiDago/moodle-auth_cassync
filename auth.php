@@ -28,6 +28,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once($CFG->libdir.'/authlib.php');
 require_once($CFG->dirroot.'/auth/cas/CAS/CAS.php');
 
 /**
@@ -37,6 +38,9 @@ require_once($CFG->dirroot.'/auth/cas/CAS/CAS.php');
  * @property bool userexists
  */
 class auth_plugin_cassync extends auth_plugin_base {
+
+
+    private $userexists = false;
 
     /**
      * Constructor.
@@ -307,9 +311,10 @@ class auth_plugin_cassync extends auth_plugin_base {
     public function user_authenticated_hook(&$user, $username, $password) {
         // Update the user in fonction of the _updatelocal settings.
 
-        if ($user->auth = 'cassync') {
+        if ($user->auth == 'cassync') {
             $userinfo = $this->get_userinfo($user->username);
-            $this->update_user_record($user->username, false, false, false);
+
+            $this->update_user_record($user->username, $this->get_profile_keys(), false, false);
         }
     }
 
@@ -345,8 +350,18 @@ class auth_plugin_cassync extends auth_plugin_base {
      * @return mixed array with no magic quotes or false on error
      */
     public function get_userinfo($username) {
+        $user = [];
+        $profilekeys = $this->get_profile_keys();
+
         if (phpCAS::checkAuthentication()) {
-            return phpCAS::getAttributes();
+            $attributs = phpCAS::getAttributes();
+
+            foreach ($profilekeys as $value) {
+                if (isset($attributs[$this->config->{'field_map_'.$value}])) {
+                    $user[$value] = $attributs[$this->config->{'field_map_'.$value}];
+                }
+            }
+            return $user;
         }
         return false;
     }
