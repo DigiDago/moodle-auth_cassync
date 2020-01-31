@@ -17,7 +17,7 @@
 /**
  * Authentication Plugin: CAS Authentication
  *
- * Authentication using CAS (Central Authentication Server).
+ * Authentication using CAS (Central Authentication Server) with possibility to synchronize attribute between Moodle and CAS
  *
  * @package         auth
  * @subpackage      cassync
