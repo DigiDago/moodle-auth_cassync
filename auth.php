@@ -21,8 +21,9 @@
  *
  * @package         auth
  * @subpackage      cassync
- * @copyright       2019 Pimenko <support@pimenko.com><pimenko.com>
+ * @author          Martin Dougiamas | Jerome GUTIERREZ | Iñaki Arenaza
  * @author          Jordan Kesraoui | Pimenko
+ * @copyright       2019 Pimenko <support@pimenko.com><pimenko.com>
  * @license         http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
