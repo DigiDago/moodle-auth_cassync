@@ -1,6 +1,6 @@
 Introduction
 ============
-Cassync is an authentication plugin for Moodle. It uses CAS 3 and you can synchronize directly attributes from your CAS with profiles fields of Moodle. It's particularly helpful if you can't connect your LDAP with Moodle. So this plugin is a good alternative to synchronize attributes thank CAS. You will have the same result that when you use classical LDAP settings available in Moodle core.
+Cassync is an authentication plugin for Moodle. It uses CAS 3 and you can synchronize directly attributes from your CAS to Moodle profiles fields. It's particularly helpful if you can't connect your LDAP with Moodle. So this plugin is a good alternative to synchronize attributes from CAS. You will have the same result that when you use classical LDAP settings available in Moodle core.
 
 
 Required version of Moodle
